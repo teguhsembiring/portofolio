@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Portfolio</title>
+<style>
+  /* Import Inter font */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+  /* Reset and base */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    color: #f0f4f8;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 24px 16px;
+  }
+  a {
+    color: #81d4fa;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover, a:focus {
+    color: #ffffff;
+  }
+
+  /* Container */
+  .container {
+    max-width: 900px;
+    width: 100%;
+    background: rgba(255 255 255 / 0.05);
+    border-radius: 16px;
+    padding: 32px 32px 48px;
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.4);
+  }
+
+  /* Header */
+  header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  header h1 {
+    font-weight: 700;
+    font-size: 3rem;
+    margin-bottom: 8px;
+    background: linear-gradient(90deg, #81d4fa, #4db6ac);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  header p {
+    font-size: 1.25rem;
+    color: #a2c7d9;
+  }
+  
+  /* Bio Data Section */
+  .bio {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 48px;
+    margin-bottom: 48px;
+  }
+  .bio-item {
+    background: rgba(255 255 255 / 0.1);
+    padding: 20px 24px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
+    border: 1px solid rgba(130 202 255 / 0.3);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: background 0.3s ease;
+  }
+  .bio-item:hover {
+    background: rgba(255 255 255 / 0.15);
+  }
+  .bio-icon {
+    font-size: 1.75rem;
+    color: #4db6ac;
+    flex-shrink: 0;
+  }
+  .bio-label {
+    font-weight: 600;
+    min-width: 90px;
+  }
+  .bio-value {
+    flex: 1;
+    font-weight: 400;
+    word-break: break-word;
+  }
+
+  /* Social Media Links */
+  .social-links {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 12px;
+  }
+  .social-links a {
+    font-size: 2rem;
+    color: #81d4fa;
+    transition: color 0.3s ease;
+  }
+  .social-links a:hover {
+    color: #4db6ac;
+  }
+
+  /* Skills Section */
+  .skills {
+    margin-bottom: 48px;
+  }
+  .skills h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: #81d4fa;
+  }
+  .skill-list {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .skill-card {
+    background: rgba(255 255 255 / 0.07);
+    border: 1px solid rgba(130 202 255 / 0.3);
+    border-radius: 16px;
+    padding: 24px 36px;
+    width: 160px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
+    cursor: default;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .skill-card:hover {
+    background: rgba(255 255 255 / 0.15);
+    transform: translateY(-8px);
+  }
+  .skill-icon {
+    font-size: 3.25rem;
+    color: #4db6ac;
+    margin-bottom: 12px;
+  }
+  .skill-name {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #d1fafd;
+  }
+
+  /* Portfolio Section */
+  .portfolio {
+    margin-bottom: 24px;
+  }
+  .portfolio h2 {
+    color: #81d4fa;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 32px;
+  }
+  .project-card {
+    background: rgba(255 255 255 / 0.07);
+    border: 1px solid rgba(130 202 255 / 0.3);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgb(0 0 0 / 0.3);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .project-card:hover {
+    box-shadow: 0 14px 40px rgb(0 0 0 / 0.5);
+    transform: translateY(-8px);
+  }
+  .project-image {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+  }
+  .project-content {
+    padding: 20px 16px 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .project-title {
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #c5f0f3;
+    font-size: 1.15rem;
+    text-align: center;
+  }
+  .project-desc {
+    flex-grow: 1;
+    font-size: 0.9rem;
+    color: #b8e5ea;
+    line-height: 1.25;
+    text-align: center;
+  }
+  .project-link {
+    margin-top: 16px;
+    text-align: center;
+  }
+  .project-link a {
+    background: #4db6ac;
+    padding: 8px 20px;
+    border-radius: 12px;
+    color: #022f2f;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 0.2);
+    display: inline-block;
+    transition: background 0.3s ease;
+  }
+  .project-link a:hover {
+    background: #81d4fa;
+    color: #022f2f;
+  }
+
+  /* Responsive - mobile */
+  @media (max-width: 640px) {
+    .bio {
+      grid-template-columns: 1fr;
+    }
+    .skill-list {
+      flex-direction: column;
+      align-items: center;
+    }
+    .skill-card {
+      width: 80%;
+      max-width: 300px;
+    }
+    .projects {
+      grid-template-columns: 1fr;
+    }
+  }
+
+</style>
+<!-- Material Icons CDN -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+<body>
+  <main class="container" role="main">
+    <header>
+      <h1>Teguh Wijaya Sembiring</h1>
+    
+    </header>
+
+    <section class="bio" aria-label="Personal biodata">
+      <div class="bio-item">
+        <span class="material-icons bio-icon" aria-hidden="true">badge</span>
+        <span class="bio-label">Nama</span>
+        <span class="bio-value">Teguh Wijaya Sembiring</span>
+      </div>
+      <div class="bio-item">
+        <span class="material-icons bio-icon" aria-hidden="true">location_on</span>
+        <span class="bio-label">Alamat</span>
+        <span class="bio-value">Padang Halaban</span>
+      </div>
+      <div class="bio-item">
+        <span class="material-icons bio-icon" aria-hidden="true">cake</span>
+        <span class="bio-label">TTL</span>
+        <span class="bio-value">07 Juli 2005</span>
+      </div>
+      <div class="bio-item">
+        <span class="material-icons bio-icon" aria-hidden="true">phone</span>
+        <span class="bio-label">No HP</span>
+        <span class="bio-value">+62 838-8879-860</span>
+      </div>
+      
+          
+        </nav>
+      </div>
+    </section>
+
+    <section class="skills" aria-label="Skills">
+      <h2>Skills</h2>
+      <div class="skill-list">
+        <div class="skill-card" tabindex="0">
+          <span class="material-icons skill-icon" aria-hidden="true">smart_toy</span>
+          <div class="skill-name">Java</div>
+        </div>
+        <div class="skill-card" tabindex="0">
+          <span class="material-icons skill-icon" aria-hidden="true">memory</span>
+          <div class="skill-name">Python</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="portfolio" aria-label="Portfolio projects">
+      <h2>Portfolio</h2>
+      <div class="projects">
+        <article class="project-card" tabindex="0" aria-labelledby="project1-title">
+          <img class="project-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/67cbae4e-8cb1-41c6-860b-48f4ea744bda.png" alt="Screenshot of Project Management Application user interface with charts and task lists" />
+          <div class="project-content">
+            <h3 id="project1-title" class="project-title">backend</h3>
+            <p class="project-desc">pengembangan dan pemeliharaan sistem web</p>
+            <p class="project-link"><a href="https://github.com/adityapratama/project-management" target="_blank" rel="noopener noreferrer">View Code</a></p>
+          </div>
+        </article>
+
+        <article class="project-card" tabindex="0" aria-labelledby="project2-title">
+          <img class="project-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ef00927e-3bf1-4441-b4d3-eecbe064567e.png" alt="Screenshot of Python Data Visualization dashboard with charts and graphs" />
+          <div class="project-content">
+            <h3 id="project2-title" class="project-title">Data Visualization Tool</h3>
+            <p class="project-desc">Python-based dashboard featuring interactive charts and analytics to interpret complex datasets effectively.</p>
+            <p class="project-link"><a href="https://github.com/adityapratama/data-viz-tool" target="_blank" rel="noopener noreferrer">View Code</a></p>
+          </div>
+        </article>
+
+        <article class="project-card" tabindex="0" aria-labelledby="project3-title">
+          <img class="project-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/28a2064d-1e18-402a-b7c8-a56df2f1fc5d.png" alt="Script coding environment, icons representing automation" />
+          <div class="project-content">
+            <h3 id="project3-title" class="project-title">Automation Scripts</h3>
+            <p class="project-desc">Collection of Python automation scripts to streamline daily tasks, file organization, and report generation.</p>
+            <p class="project-link"><a href="https://github.com/adityapratama/automation-scripts" target="_blank" rel="noopener noreferrer">View Code</a></p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+
